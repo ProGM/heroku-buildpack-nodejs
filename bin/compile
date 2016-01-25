@@ -8,6 +8,8 @@ set -o pipefail   # don't ignore exit codes when piping output
 set -o nounset    # fail on unset variables
 unset GIT_DIR     # Avoid GIT_DIR leak from previous build steps
 
+path=`echo "$INCLUDE_PATH" | cut -d : -f 1`
+export CXX="`which g++` -I$path/ImageMagick"
 ### Constants
 
 DEFAULT_CACHE="node_modules bower_components"
